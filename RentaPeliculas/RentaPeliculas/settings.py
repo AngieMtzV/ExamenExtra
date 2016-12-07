@@ -25,7 +25,7 @@ SECRET_KEY = 'ff(%%u%7t2st^3iurizwc7s799-mtpps!2lc4h61r@=y=bvu&m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Pelicula',
+    'Renta',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'RentaPeliculas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'RentaPeliculas',
+        'USER': 'admin',
+        'PASSWORD': 'admin123',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 

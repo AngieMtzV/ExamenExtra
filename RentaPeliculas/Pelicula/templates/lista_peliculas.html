@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<h4>Lista de Peliculas </h4>
+	{% endblock %}
+
+{% block content %}
+<table > 
+<thead>
+	<tr>
+		<td>Titulo</td>
+		<td>Sinopsis</td>
+		<td>Clasificacion</td>
+		<td>Duracion</td>
+		<td>Genero</td>
+		<td>Estreno</td>
+		<td>Actores</td>
+		<td>Renta</td>
+
+	</tr>
+
+</thead>
+<tbody>
+	
+	{% for pelicula in peliculas %}
+	<tr>
+		<td>{{pelicula.id}}</td>
+		<td>{{pelicula.titulo}}</td>
+		<td>{{pelicula.sinopsis}}</td>
+		<td>{{pelicula.clasificacion}}</td>
+		<td>{{pelicula.duracion}}</td>
+		<td>{{pelicula.genero}}</td>
+		<td>{{pelicula.estreno}}</td>
+		<td>{{pelicula.actores}}</td>
+		<td>{{pelicula.rentada}}</td>
+
+		<td>
+			<a href="{% url 'editar_pelicula' pelicula.id %}">Editar </a>
+			<a href="{% url 'eliminar_pelicula' pelicula.id %}">Borrar </a>
+		</td>
+		
+	</tr>
+	{% endfor %}
+
+	
+</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+
+
+{% block content %}
+<from method="POST">
+	{% csrf_token %}
+	<h3>¿Desea eliminar pelicula{{pelicula.titulo}}?</h3>
+	
+	<button type='submit'>Eliminar</button>
+	<a class="btn btn default" href="{% url 'lista_peliculas' %}"> Cancelar</a>
+</from>
+{% endblock %}

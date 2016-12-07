@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+
+
+{% block content %}
+<from method="POST">
+	{% csrf_token %}
+	<a class="btn btn default" href="{% url 'lista_peliculas' %}"> Lista de Peliculas</a>
+</from>
+{% endblock %}
