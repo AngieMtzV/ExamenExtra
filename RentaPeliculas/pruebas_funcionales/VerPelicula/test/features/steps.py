@@ -9,11 +9,8 @@ def dado_que_ingreso_al_sistema_de_renta_de_peliculas(step):
 
 @step(u'Cuando ingreso al modulo lista peliculas')
 def cuando_ingreso_al_modulo_lista_peliculas(step):
-  time.sleep(3)
-  button = world.driver.find_element_by_partial_link_text("Lista de Peliculas").click()
-  time.sleep(3)
-  assert False, 'This step must be implemented'
+	button = world.driver.find_element_by_partial_link_text("Lista de Peliculas").click()
+
 @step(u'Entonces puedo ver las listas de peliculas en existencia.')
 def entonces_puedo_ver_las_listas_de_peliculas_en_existencia(step):
-    tabla = world.driver.find_element_by_name("table")
-    assert "admin/auth/user/" in world.driver.current_url
+	pass

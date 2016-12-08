@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<h4>Lista de Peliculas </h4>
+	{% endblock %}
+
+{% block content %}
+<table > 
+<thead>
+	<tr>
+		<td>Registro</td>
+		<td>Usuario</td>
+		<td>Pelicula</td>
+		<td>Entrega</td>
+		<td>Genero</td>
+
+	</tr>
+
+</thead>
+<tbody>
+	
+	{% for renta in rentas %}
+	<tr>
+		<td>{{renta.id}}</td>
+		<td>{{renta.registro}}</td>
+		<td>{{renta.usuario}}</td>
+		<td>{{renta.pelicula}}</td>
+		<td>{{renta.entrega}}</td>
+		<td>{{renta.genero}}</td>
+		
+
+		<td>
+			<a href="{% url 'editar_renta' renta.id %}">Editar </a>
+			<a href="{% url 'eliminar_renta' renta.id %}">Borrar </a>
+		</td>
+		
+	</tr>
+	{% endfor %}
+
+	
+</tbody>
+</table>
+{% endblock %}
