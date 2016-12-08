@@ -2,7 +2,9 @@
 from lettuce import step
 
 @step(u'Dado que selecciono la pelicula "([^"]*)"')
-def dado_que_selecciono_la_pelicula_group1(step, group1):
+def dado_que_selecciono_la_pelicula_group1(step, pelicula):
+	titulo = world.driver.find_element_by_xpath('//table/tbody')
+
     assert False, 'This step must be implemented'
 @step(u'Cuando pesiono el boton "([^"]*)"')
 def cuando_pesiono_el_boton_group1(step, group1):

@@ -25,9 +25,9 @@ class Actores(models.Model):
 class Pelicula(models.Model):
 	titulo = models.CharField(u'Titulo', max_length=200)
 	sinopsis = models.CharField(u'Sinopsis',max_length=350)
-	clasificacion = models.OneToOneField(Clas, null=False, unique=True, on_delete=models.CASCADE)
+	clasificacion = models.ForeignKey(Clas)
 	duracion = models.CharField(u'Duracion', max_length=50)
-	genero = models.OneToOneField(Genero, null=False, unique=True, on_delete=models.CASCADE)
+	genero = models.ForeignKey(Genero)
 	estreno = models.BooleanField()
 	actores = models.ManyToManyField(Actores)
 	rentada = models.BooleanField(default=False)
