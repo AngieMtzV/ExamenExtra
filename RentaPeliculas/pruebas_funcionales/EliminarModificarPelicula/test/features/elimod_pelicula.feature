@@ -3,13 +3,15 @@
   Quiero ver la lista de peliculas de mi catalogo
   Para poder visualizar las peliculas en existencia y rentadas.
 
-  Scenario: Eliminar Pelicula
-  	Dado que selecciono la pelicula "Koizora"
-  	Cuando pesiono el boton "Eliminar"
-  	Entonces veo que la pelicula no esta en la lista de peliculas actualizada.
 
-  Scenario: Modificar Pelicula
-  	Dado que selecciono la pelicula "Hercules"
-  	Cuando pesiono el boton "Modificar" y quito el estatus de "rentada"
-  	Entonces veo que la pelicula ya no esta rentada en la lista de peliculas.
-  	
+Scenario: Editar peliculas
+    Dado que quiero editar una pelicula de la lista
+    Cuando visualizo la pagina de edicion
+    Entonces puedo editar el titulo de la pelicula
+    |titulo|sinopsis|clasificacion|duracion|genero|estreno|actores|
+    |Hercules2|Dios del Olimpo|A|95min|Animacion|False|Disney|
+
+Scenario: Eliminar peliculas
+    Dado que quiero eliminar una pelicula de mi catalogo
+    Cuando presiono el boton eliminar
+    Entonces puedo eliminar una pelicula

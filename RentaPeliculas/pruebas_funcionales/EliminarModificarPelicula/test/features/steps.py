@@ -3,24 +3,39 @@ from lettuce import step,world
 from selenium import webdriver
 import time
 
-@step(u'Dado que selecciono la pelicula "([^"]*)"')
-def dado_que_selecciono_la_pelicula_group1(step, pelicula):
+@step(u'Dado que quiero editar una pelicula de la lista')
+def dado_que_quiero_editar_una_pelicula_de_la_lista(step):
 	world.driver = webdriver.Chrome()
-	world.driver.get("http://192.168.33.10:8000/peliculas/lista/")
-
-	titulo = world.driver.find_element_by_xpath('//table/tbody/tr[2]/td[2]')
-	assert True, pelicula == titulo.text
-@step(u'Cuando pesiono el boton "([^"]*)"')
-def cuando_pesiono_el_boton_group1(step, boton):
-	boton = world.driver.find_element_by_link_test("Borrar")
+	world.driver.get('http://192.168.33.10:8000/peliculas/lista/')
+	boton = world.driver.find_element_by_name('editar')
 	boton.click()
-@step(u'Entonces veo que la pelicula no esta en la lista de peliculas actualizada.')
-def entonces_veo_que_la_pelicula_no_esta_en_la_lista_de_peliculas_actualizada(step):
-    assert False, 'This step must be implemented'
-@step(u'Cuando pesiono el boton "([^"]*)" y quito el estatus de "([^"]*)"')
-def cuando_pesiono_el_boton_group1_y_quito_el_estatus_de_group2(step, nombre, button):
-	
+	time.sleep(2)
+
+
+@step(u'Cuando visualizo la pagina de edicion')
+def cuando_visualizo_la_pagina_de_edicion(step):
+	world.driver.get('http://192.168.33.10:8000/peliculas/7/modificar/')
+	time.sleep(2)
+
+
+@step(u'Entonces puedo editar el titulo de la pelicula')
+def entonces_puedo_editar_el_titulo_de_la_pelicula(step):
+	datos = step.columns
+	titulo = world.driver.find_element_by_id('id_titulo').clear()
+	titulo = world.driver.find_element_by_id('id_titulo').send_keys(datos[0].get('titulo'))
+	boton = world.driver.find_element_by_tag_name('button')
+	boton.click()
+
+@step(u'Dado que quiero eliminar una pelicula de mi catalogo')
+def dado_que_quiero_eliminar_una_pelicula_de_mi_catalogo(step):
+	pass
     
-@step(u'Entonces veo que la pelicula ya no esta rentada en la lista de peliculas.')
-def entonces_veo_que_la_pelicula_ya_no_esta_rentada_en_la_lista_de_peliculas(step):
-    assert False, 'This step must be implemented'
+@step(u'Cuando presiono el boton eliminar')
+def cuando_presiono_el_boton_eliminar(step):
+	boton = world.driver.find_element_by_name('borrar')
+	boton.click()
+    
+@step(u'Entonces puedo eliminar una pelicula')
+def entonces_puedo_eliminar_una_pelicula(step):
+	world.driver.get('http://192.168.33.10:8000/peliculas/lista/')
+   
